@@ -198,7 +198,8 @@ elif backend_reachable:
             state = "down"
             badge = '<span class="badge badge-down">DOWN</span>'
             code = latest["status_code"] if latest["status_code"] else "no response"
-            meta = f"{code}"
+            rt = latest.get("response_time_ms")
+            meta = f"{code} · {rt} ms" if rt is not None else f"{code}"
 
         checked_at = ""
         if latest and latest.get("checked_at"):
